@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="取名网婴儿取名公司取名">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <title>文档压缩网 图片压缩 GIF压缩 PDF压缩 PDF合并 PDF分割</title>
+
+    {{if .upload}}
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/jumbotron.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <!-- Format Images loader CSS -->
+    <link rel="stylesheet" href="static/css/jquery.imagesloader.css">
+    <link rel="stylesheet" href="static/css/upload.css">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- Font awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Images loader -->
+    <script src="/static/js/jquery.imagesloader-1.0.1.js"></script>
+    {{end}}
+    <style>
+        body { background: #fafafa; }
+        .container { margin: auto; max-width: 100%;}
+    </style>
+  </head>
+
+  <body>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-white">  
+        </nav>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/app">文档压缩网</a>
+            <a class="navbar-brand" href="/app/?upload&type=0">图片压缩</a>
+            <a class="navbar-brand" href="/app/?upload&type=1">GIF压缩</a>
+            <a class="navbar-brand" href="/app/?upload&type=2">PDF压缩</a>
+            <a class="navbar-brand" href="/app/?upload&type=3">PDF合并</a>
+            <a class="navbar-brand" href="/app/?upload&type=4">PDF分割</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    </nav>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+          {{if not .upload}}
+          <div class="container" id="container">
+              <div class="items">
+                  <a class="card" style="width: 18rem;" href="/app?upload&type=0">
+                      <img class="card-img-top" src="/static/img/图片压缩.png" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">图片压缩</h5>
+                          <p class="card-text">不损视觉效果,压缩图片大小</p>
+                      </div>
+                  </a>
+                  <a class="card" style="width: 18rem;" href="/app?upload&type=1">
+                      <img class="card-img-top" src="{% static 'img/GIF压缩.png' %}" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">GIF压缩</h5>
+                          <p class="card-text">不改变尺寸,压缩动图大小</p>
+                      </div>
+                  </a>
+                  <a class="card" style="width: 18rem;" href="/app?upload&type=2">
+                      <img class="card-img-top" src="{% static 'img/pdf压缩.png' %}" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">PDF压缩</h5>
+                          <p class="card-text">极大压缩PDF大小</p>
+                      </div>
+                  </a>
+                  <a class="card" style="width: 18rem;" href="/app?upload&type=3">
+                      <img class="card-img-top" src="{% static 'img/PDF合并.png' %}" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">PDF合并</h5>
+                          <p class="card-text">多个PDF合并为一个</p>
+                      </div>
+                  </a>
+                  <a class="card" style="width: 18rem;" href="/app?upload&type=4">
+                      <img class="card-img-top" src="{% static 'img/PDF分割.png' %}" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">PDF分割</h5>
+                          <p class="card-text">PDF拆分为每页一个文件</p>
+                      </div>
+                  </a>
+              </div>
+          </div>
+          {{else}}
+          <div class="container" id="container">
+
+              <div class="container col-8">
+                  <h1>{{.upload_title}}</h1>
+                  <p class="lead">点击添加单个或者多个文件</p>
+                  <form id="frm" method="post" class="needs-validation" novalidate="">
+
+                      <!--Image Upload-->
+                      <div class="row mt-3 mb-2">
+
+                          <div class="col-12 pr-0 text-left">
+                              <label for="Images" class="col-form-label text-nowrap"><strong>上传</strong></label>
+                          </div>
+                      </div>
+
+                      <!--Image container -->
+                      <div class="row"
+                           data-type="imagesloader"
+                           data-errorformat="文件接收的格式为"
+                           data-errorsize="文件最大为"
+                           data-errorduplicate="文件已经加载"
+                           data-errormaxfiles="最大上传文件数"
+                           data-errorminfiles="最小上传文件数"
+                           data-modifyimagetext="修改文件">
+
+                          <!-- Progress bar -->
+                          <div class="col-12 order-1 mt-2">
+                              <div data-type="progress" class="progress" style="height: 25px; display:none;">
+                                  <div data-type="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%;">Load in progress...</div>
+                              </div>
+                          </div>
+
+                          <!-- Model -->
+                          <div data-type="image-model" class="col-4 pl-2 pr-2 pt-2" style="max-width:200px; display:none;">
+
+                              <div class="ratio-box text-center" data-type="image-ratio-box">
+                                  <img data-type="noimage" class="btn btn-light ratio-img img-fluid p-2 image border dashed rounded" src="{% static 'img/添加文件.svg' %}" style="cursor:pointer;">
+                                  <div data-type="loading" class="img-loading" style="color:#218838; display:none;">
+                                      <span class="fa fa-2x fa-spin fa-spinner"></span>
+                                  </div>
+                                  <img data-type="preview" class="btn btn-light ratio-img img-fluid p-2 image border dashed rounded" src="" style="display: none; cursor: default;">
+                                  <span class="badge badge-pill badge-success p-2 w-50 main-tag" style="display:none;">Main</span>
+                              </div>
+
+                              <!-- Buttons -->
+                              <div data-type="image-buttons" class="row justify-content-center mt-2">
+                                  <button data-type="add" class="btn btn-outline-success" type="button"><span class="fa fa-camera mr-2"></span>添加</button>
+                                  <button data-type="btn-modify" type="button" class="btn btn-outline-success m-0" data-toggle="popover" data-placement="right" style="display:none;">
+                                      <span class="fa fa-pencil-alt mr-2"></span>修改
+                                  </button>
+                              </div>
+                          </div>
+
+                          <!-- Popover operations -->
+                          <div data-type="popover-model" style="display:none">
+                              <div data-type="popover" class="ml-3 mr-3" style="min-width:150px;">
+                                  <div class="row">
+                                      <div class="col p-0">
+                                          <button data-operation="main" class="btn btn-block btn-success btn-sm rounded-pill" type="button"><span class="fa fa-angle-double-up mr-2"></span>Main</button>
+                                      </div>
+                                  </div>
+                                  <div class="row mt-2">
+                                      <div class="col-6 p-0 pr-1">
+                                          <button data-operation="left" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fa fa-angle-left mr-2"></span>Left</button>
+                                      </div>
+                                      <div class="col-6 p-0 pl-1">
+                                          <button data-operation="right" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Right<span class="fa fa-angle-right ml-2"></span></button>
+                                      </div>
+                                  </div>
+                                  <div class="row mt-2">
+                                      <div class="col-6 p-0 pr-1">
+                                          <button data-operation="rotateanticlockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fas fa-undo-alt mr-2"></span>Rotate</button>
+                                      </div>
+                                      <div class="col-6 p-0 pl-1">
+                                          <button data-operation="rotateclockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Rotate<span class="fas fa-redo-alt ml-2"></span></button>
+                                      </div>
+                                  </div>
+                                  <div class="row mt-2">
+                                      <button data-operation="remove" class="btn btn-outline-danger btn-sm btn-block" type="button"><span class="fa fa-times mr-2"></span>删除</button>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <div class="form-group row">
+                          <div class="input-group">
+                              <!--Hidden file input for images-->
+                              <input id="files" type="file" name="files[]" data-button="" multiple="" accept="image/jpeg, image/png, image/gif," style="display:none;">
+                          </div>
+                      </div>
+
+                  </form>
+
+                  <div class="row mt-2">
+                      <!--div class="col-md-4 offset-md-8 text-center mb-4">
+                          {%if '压缩' in upload_title%}
+                          <div class="row mt-2" style="margin-left:0">
+                          <input type="range" id="myRange" value="1" max="50" style="width:inherit">
+                          <div id="rangeValue">减少:20%</div>
+                          </div>
+                          {%endif%}
+                          <button id="btnContinue" type="submit" form="frm" class="btn btn-block btn-outline-success float-right" data-toggle="tooltip" data-trigger="manual" data-placement="top" data-title="Continue">
+                              开始{{.upload_title|slice:"-2:"}}<span id="btnContinueIcon" class="fa fa-chevron-circle-right ml-2"></span><span id="btnContinueLoading" class="fa fa-spin fa-spinner ml-2" style="display:none"></span>
+                          </button>
+                      </div -->
+                      <div class="ctrlPanel clearfix">
+                          <div class="funRow">
+                            <div class="funRowBox">
+                                <label class="ctl">
+                                    <select class="presetWH">
+                                        <option value="|" selected="selected">保持原始尺寸</option>
+                                        <option value="1024|">适合电脑尺寸</option>
+                                        <option value="480|">适合手机尺寸</option>
+                                        <option value="200|">适合微信表情尺寸（大）</option>
+                                        <option value="140|">适合微信表情尺寸（小）</option>
+                                        <option value="295|413">证件 1 寸照</option>
+                                        <option value="413|626">证件 2 寸照</option>
+                                        <option value="1024|">证书扫描件</option>
+                                        <option value="set">自定义</option>
+                                    </select>
+                                </label>
+                                <label class="ctl">
+                                    <div class="paramTip">通常图片用在电脑上设置宽：1024像素，手机：480像素，微信表情：140像素。</div>
+                                    宽 (像素)：<input placeholder="原比例" class="param w w60" type="number" name="w" required="required" min="0" value="">，
+                                </label>
+                                <label class="ctl">
+                                    <div class="paramTip">高度不填，压缩时会自动按比例算出高度。</div>
+                                    高 (像素)：<input placeholder="原比例" class="param h w60" type="number" name="h" required="required" min="0"> 。
+                                </label>
+                                <label class="ctl ">
+                                    <div class="paramTip">压缩等级越小，压缩后越小。压缩等级越大，图片越清晰。</div>
+                                    压缩等级：<select class="param q w100" name="q" required="required">
+                                        <option value="98">98</option><option value="96">96</option><option value="94">94</option><option value="92">92</option><option value="90">90</option><option value="88">88</option><option value="86">86</option><option value="84">84</option><option value="82">82</option><option value="80">80</option><option value="78">78</option><option value="76">76</option><option value="74">74</option><option value="72">72</option><option value="70" selected="selected">70 （推荐等级）</option><option value="68">68</option><option value="66">66</option><option value="64">64</option><option value="62">62</option><option value="60">60</option><option value="58">58</option><option value="56">56</option><option value="54">54</option><option value="52">52</option><option value="50">50</option><option value="48">48</option><option value="46">46</option><option value="44">44</option><option value="42">42</option><option value="40">40</option><option value="38">38</option><option value="36">36</option><option value="34">34</option><option value="32">32</option><option value="30">30</option>
+                                    </select>
+                                </label>
+                                <label class="ctl ">
+                                    <div class="paramTip">若填写此项，压缩等级失效。GIF 和 PNG 会自动转为 JPG。单位换算：1MB＝1024KB。</div>
+                                    <input class="param size" type="number" name="size" required="required" placeholder="例如：100" min="10"> KB以内
+                                </label>
+                            </div>                           
+                          </div>
+                          <div class="compressStart" style="display: block;">开始<br>压缩</div>
+                      </div>
+              </div>
+
+              </div>
+          </div>
+          {{end}}
+      </div>
+
+      <div class="container">
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; Company 2017-2021</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {%if upload is None%}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/cookies.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    {% endif%}
+  </body>
+    <script>
+        function submitForm(){
+            var data = $("#myForm")[0];
+            let formData = new FormData(data); 
+            formData.append("csrfmiddlewaretoken",csrftoken); 
+
+            var x=document.forms["myForm"]["xingshi"].value;
+            if (x==null || x==""){
+                alert("姓氏必须填写");
+                return false;
+            }
+            var x=document.forms["myForm"]["sex"].value;
+            if (x==null || x==""){
+                alert("性别必须填写");
+                return false;
+            }
+            var x=document.forms["myForm"]["date"].value;
+            if (x==null || x==""){
+                alert("出生日期必须填写");
+                return false;
+            }
+            $.ajax({
+                url: "/app/search-post",
+                type:"post",
+                data:formData,
+                contentType: false,
+                processData: false,
+                success: function(result){
+                    console.log(result);
+                    var url = result["res"];
+                    window.open(url,"_self");
+                    //$("#result").html(result);
+                }
+            });
+        }
+    </script>
+
+
+    {%if upload is not None%}
+    <!-- Custom javascript -->
+    <script type="text/javascript">
+
+        // Ready
+        $(document).ready(function () {
+
+            //Image loader var to use when you need a function from object
+            var auctionImages = null;
+
+            // Create image loader plugin
+            var imagesloader = $('[data-type=imagesloader]').imagesloader({
+                maxFiles: 4
+                , minSelect: 1
+                , imagesToLoad: auctionImages
+            });
+
+            //Form
+            $frm = $('#frm');
+
+            // Form submit
+            $frm.submit(function (e) {
+
+                var $form = $(this);
+
+                var files = imagesloader.data('format.imagesloader').AttachmentArray;
+
+                var il = imagesloader.data('format.imagesloader');
+
+                if (il.CheckValidity()){
+                    alert('上传 ' + files.length + ' 个文件');        
+                    //这里添加上传逻辑
+                }
+
+                e.preventDefault();
+                e.stopPropagation();
+            });
+
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <script>
+        try {
+            fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+                return true;
+            }).catch(function(e) {
+                var carbonScript = document.createElement("script");
+                carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+                carbonScript.id = "_carbonads_js";
+                document.getElementById("carbon-block").appendChild(carbonScript);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        $('#myRange').mousemove(function(){
+            var s = "减少:"+$('#myRange').val()+"%";
+            console.log(s);
+            $('#rangeValue').text(s);
+        });
+    </script>
+    {%endif%}
+</html>

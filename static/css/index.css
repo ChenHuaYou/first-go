@@ -1,0 +1,35 @@
+.card-img-top {
+    width: 88%;
+    align-self: center;
+}
+.items {
+    width: 1400px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-align: center;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.container {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+width: 14rem !important;
+}
+
+.card-body {
+    font-size: 0.5rem;
+}
+
+.h5, h5 {
+    font-size: 0.7rem;
+}
+
+.card-title {
+    /* margin-bottom: .75rem; */
+}

@@ -1,0 +1,92 @@
+.ctrlPanel {
+    margin: 0px;
+    background: #495057;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+.clearfix {
+    zoom: 1;
+}
+
+.funRow {
+    font-size: 14px;
+    margin: 20px 20px 10px 20px;
+    padding: 0;
+    position: relative;
+}
+
+.funRow .funRowBox {
+    border: 1px solid #eaf0f4;
+    padding: 22px 100px 22px 20px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.funRow label {
+    display: inline-block;
+    margin: 0 0 0px 0;
+}
+
+.funRow select {
+    width: 92px;
+}
+
+.funRow input, .funRow select {
+    border: 1px solid #ccc;
+    background: #f6f6f6 url(/static/img/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x;
+    padding: .3em .4em .3em .4em;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #2c3239;
+}
+
+.paramTip {
+    position: absolute;
+    background: #2c3239;
+    color: #fff;
+    padding: 6px 8px;
+    bottom: 80px;
+    display: none;
+    border: 1px #fff solid;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.funRow input.w60 {
+    width: 71px;
+}
+.funRow input {
+    position: relative;
+    top: 0px;
+    height: 28.3px;
+}
+
+.funRow select.w100 {
+    width: 129px;
+}
+
+.ctrlPanel .compressStart:hover {
+    border-color: #f5a83b #f39818 #f39818 #f5a83b;
+    background: #f5a83b;
+}
+
+.ctrlPanel .compressStart {
+    position: absolute;
+    right: 24px;
+    top: 30px;
+    border-width: 1px 4px 4px 1px;
+    border-style: solid;
+    border-color: #f39818 #d08214 #d08214 #f39818;
+    background: #f39818;
+    width: 83px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    height: 55px;
+    padding-top: 6px;
+    vertical-align: middle;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+    line-height: 20px;
+}

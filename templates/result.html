@@ -1,0 +1,12 @@
+{% for name in names%}
+<li class="name-box">
+    <h3>{{xingshi}}{{name.name}}</h3>
+    <p class="sentence">
+    <span>「</span>{{name.sentence|safe}}<span>」</span>
+    </p>
+    <div class="source-row">
+        <p class="book">{{name.book}}</p>
+        <p class="author">{{name.author}}</p>
+    </div>
+</li>
+{% endfor %}

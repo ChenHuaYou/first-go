@@ -1,0 +1,54 @@
+.result-container {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-box {
+    box-sizing: border-box;
+    min-height: 280px;
+    min-width: 320px;
+    flex: 1;
+    margin: 1rem;
+    padding: 2rem 1rem;
+    background-color: #e7b375;
+    font-size: 1rem;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 5%), 0 1px 4px 0 rgb(0 0 0 / 8%), 0 3px 1px -2px rgb(0 0 0 / 20%);
+    border-radius: 2px;
+}
+
+.name-box > h3 {
+    font-size: 3rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.name-box .sentence {
+    color: #fff;
+    line-height: 1.5rem;
+}
+
+.name-box .source-row {
+    display: flex;
+    color: #f8f8f4;
+}
+
+.name-box i {
+    font-style: normal;
+    padding: 0 2px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.name-box .source-row .author {
+    flex: 1;
+}
+
+.name-box .source-row .author {
+    text-align: right;
+}
